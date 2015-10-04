@@ -1,2 +1,2 @@
-cmdhistory=["(start-server)" "(create-table)" "(Math/pow 2 4)" "(sqrt 4)" "(Math/sqrt 4)" "(defn Euclidean [x1 x2 y1 y2]\\n  (Math/sqrt( + (Math/pow 2 (- x1 x2)) (Math/pow 2 (- y1 y2)) )\\n  ))" "(Euclidean 5 4 4 1)"]
+cmdhistory=["(start-server)" "(create-table)" "(Math/pow 2 4)" "(sqrt 4)" "(Math/sqrt 4)" "(defn Euclidean [x1 x2 y1 y2]\\n  (Math/sqrt( + (Math/pow 2 (- x1 x2)) (Math/pow 2 (- y1 y2)) )\\n  ))" "(Euclidean 5 4 4 1)" "(/ 1 2)" "(\\\\ 1 2)" "(Euclidean 5 4 4 1)"]
 eclipse.preferences.version=1
