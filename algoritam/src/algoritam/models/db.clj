@@ -64,3 +64,10 @@
   db
    (get (sql/with-query-results res
     ["select The_Night_Listener from film_critics where Name = ?" Name] (first res)) :the_night_listener)))
+
+(defn vrati_ime_kolone [Name]
+  "Select user with given name"
+  (sql/with-connection
+  db
+   (get (sql/with-query-results res
+    ["select column_name from film_critics where Name = ?" Name] (first res)) :the_night_listener)))
