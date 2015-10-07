@@ -16,4 +16,10 @@
   (sumaKvadrataRazlike (algoritam.models.db/vrati-The_Night_Listener kriticar1) (algoritam.models.db/vrati-The_Night_Listener kriticar2))
   (/ 1 (+ 1 (Math/sqrt @suma))))
 
+(def vrednosti (atom {}))
 
+(defn nadjiOstaleKriticareOVOO1 [Name]
+        (for [i (range (algoritam.models.db/vrati-broj-redova-u-bazi))]
+          (swap! vrednosti assoc (algoritam.models.db/OOO Name i) (euklid Name (algoritam.models.db/OOO Name i)))
+          )
+        )
