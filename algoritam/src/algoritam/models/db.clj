@@ -65,9 +65,30 @@
    (get (sql/with-query-results res
     ["select The_Night_Listener from film_critics where Name = ?" Name] (first res)) :the_night_listener)))
 
-(defn vrati_ime_kolone [Name]
+(defn vrati_sve_osim [Name]
   "Select user with given name"
   (sql/with-connection
   db
-   (get (sql/with-query-results res
-    ["select column_name from film_critics where Name = ?" Name] (first res)) :the_night_listener)))
+  (sql/with-query-results rows
+    ["select Name from film_critics except select Name from film_critics where Name = ?" Name ] (into [] rows))))
+
+(defn vrati-broj-redova-u-bazi []
+     (- (sql/with-connection
+       db
+         (get (sql/with-query-results res
+                ["select count(*) as redovi from film_critics" ] (first res)) :redovi)) 1))
+
+
+(defn nadjiOstaleKriticare [Name]
+        (for [i (range (vrati-broj-redova-u-bazi))]
+          (get (get   (sql/with-connection
+                 db
+                 (sql/with-query-results rows
+                   ["select Name from film_critics except select Name from film_critics where Name = ?" Name ] (into [] rows))) i) :name)))
+
+
+(defn OOO [Name i]
+  (get (get   (sql/with-connection
+                 db
+                 (sql/with-query-results rows
+                   ["select Name from film_critics except select Name from film_critics where Name = ?" Name ] (into [] rows))) i) :name))

@@ -59,6 +59,8 @@
   ;(resetAll)
   )
 
+(def vrednosti (atom {}))
+
 (defn sumaZajednickihOcena [kriticar1 kriticar2]
   (brojZajednickihOcena (algoritam.models.db/vrati-Lady_in_the_Water kriticar1) (algoritam.models.db/vrati-Lady_in_the_Water kriticar2))
   (brojZajednickihOcena (algoritam.models.db/vrati-Snakes_on_a_Plane kriticar1) (algoritam.models.db/vrati-Snakes_on_a_Plane kriticar2))
@@ -67,4 +69,13 @@
   (brojZajednickihOcena (algoritam.models.db/vrati-You_Me_and_Dupree kriticar1) (algoritam.models.db/vrati-You_Me_and_Dupree kriticar2))
   (brojZajednickihOcena (algoritam.models.db/vrati-The_Night_Listener kriticar1) (algoritam.models.db/vrati-The_Night_Listener kriticar2))
   (pirson)
+;  (swap! atom assoc kriticar2 (double pirson))
   )
+
+(defn bilosta []
+  (key (apply max-key val @vrednosti)))
+
+;Radiiiiiii!!!
+(defn nadjiOstaleKriticareOVOO [Name]
+        (for [i (range (algoritam.models.db/vrati-broj-redova-u-bazi))]
+          (swap! vrednosti assoc (algoritam.models.db/OOO Name i) (sumaZajednickihOcena Name (algoritam.models.db/OOO Name i)))))

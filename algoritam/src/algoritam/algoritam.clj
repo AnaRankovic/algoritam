@@ -15,3 +15,5 @@
   (sumaKvadrataRazlike (algoritam.models.db/vrati-You_Me_and_Dupree kriticar1) (algoritam.models.db/vrati-You_Me_and_Dupree kriticar2))
   (sumaKvadrataRazlike (algoritam.models.db/vrati-The_Night_Listener kriticar1) (algoritam.models.db/vrati-The_Night_Listener kriticar2))
   (/ 1 (+ 1 (Math/sqrt @suma))))
+
+
