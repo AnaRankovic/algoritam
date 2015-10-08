@@ -1,4 +1,4 @@
-(ns algoritam.pirs
+(ns algoritam.pirson
      (:require [algoritam.models.db :as db]))
 
 (def s1 (atom 0))
@@ -55,9 +55,7 @@
   )
 
 (defn pirson []
-  (/ (- (* @n @sXputaY) (* @s1 @s2)) (Math/sqrt (* (- (* @n @sKvadrat1) (Math/pow @s1 2)) (- (* @n @sKvadrat2) (Math/pow @s2 2)))))  
-  ;(resetAll)
-  )
+  (/ (- (* @n @sXputaY) (* @s1 @s2)) (Math/sqrt (* (- (* @n @sKvadrat1) (Math/pow @s1 2)) (- (* @n @sKvadrat2) (Math/pow @s2 2))))))
 
 (def vrednosti (atom {}))
 
@@ -68,14 +66,11 @@
   (brojZajednickihOcena (algoritam.models.db/vrati-Superman_Returns kriticar1) (algoritam.models.db/vrati-Superman_Returns kriticar2))
   (brojZajednickihOcena (algoritam.models.db/vrati-You_Me_and_Dupree kriticar1) (algoritam.models.db/vrati-You_Me_and_Dupree kriticar2))
   (brojZajednickihOcena (algoritam.models.db/vrati-The_Night_Listener kriticar1) (algoritam.models.db/vrati-The_Night_Listener kriticar2))
-  (pirson)
-;  (swap! atom assoc kriticar2 (double pirson))
-  )
+  (pirson))
 
-(defn bilosta []
+(defn najslicnijiKriticar []
   (key (apply max-key val @vrednosti)))
 
-;Radiiiiiii!!!
-(defn nadjiOstaleKriticareOVOO [Name]
+(defn uporediSaOstalimKriticarima [Name]
         (for [i (range (algoritam.models.db/vrati-broj-redova-u-bazi))]
           (swap! vrednosti assoc (algoritam.models.db/OOO Name i) (sumaZajednickihOcena Name (algoritam.models.db/OOO Name i)))))

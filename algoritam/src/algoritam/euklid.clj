@@ -1,4 +1,4 @@
-(ns algoritam.algoritam
+(ns algoritam.euklid
     (:require [algoritam.models.db :as db]))
 
 (def suma (atom 0.0))
@@ -18,8 +18,9 @@
 
 (def vrednosti (atom {}))
 
-(defn nadjiOstaleKriticareOVOO1 [Name]
+(defn najslicnijiKriticar []
+  (key (apply min-key val @vrednosti)))
+
+(defn uporediSaOstalimKriticarima [Name]
         (for [i (range (algoritam.models.db/vrati-broj-redova-u-bazi))]
-          (swap! vrednosti assoc (algoritam.models.db/OOO Name i) (euklid Name (algoritam.models.db/OOO Name i)))
-          )
-        )
+          (swap! vrednosti assoc (algoritam.models.db/OOO Name i) (euklid Name (algoritam.models.db/OOO Name i)))))
